@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.Networking.LimelightTable;
 
