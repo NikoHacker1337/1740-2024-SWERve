@@ -43,6 +43,7 @@
 - [ ] Add pathplanning for autos
 - [ ] Finish the system functionality
 - [ ] Tune the system so it works well
+- [ ] If apriltag vision pose esimation should take precedence in getPose, update it to get the pos with the limelight if able
 
 `Controls`
 - [ ] Create a better controller scheme than last year to set up controls (addControlerFunction(func(), a)) ? (opt.)

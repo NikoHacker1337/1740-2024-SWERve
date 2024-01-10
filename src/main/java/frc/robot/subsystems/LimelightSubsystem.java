@@ -49,16 +49,24 @@ public class LimelightSubsystem extends SubsystemBase {
   //Returns true if Limelight is in vision processing mode
   public Boolean isVisionProcessing(){
     return m_LimelightTable.getCamMode() == 0 && m_LimelightTable.getLedMode() == 3;
-    
-    
-  }
-  public void targetMidNode(){
-    m_LimelightTable.setPipeline(0);
   }
 
-  public void targetHighNode(){
-    m_LimelightTable.setPipeline(1);
+  // public void targetMidNode(){
+  //   m_LimelightTable.setPipeline(0);
+  // }
+
+  // public void targetHighNode(){
+  //   m_LimelightTable.setPipeline(1);
+  // }
+
+  // public void getAprilTagPosition(){
+  //   m_LimelightTable.setPipeline(1);
+  // }
+
+  public double getTargetedID(){
+    return m_LimelightTable.getCurrentApriltagId();
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
