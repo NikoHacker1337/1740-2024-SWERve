@@ -61,7 +61,7 @@
 - [ ] Get current limelight tag id and adjust co-driver controls based off it.
 
 * Concurent work on limelight and lamelight
-- [x] Import old code
+- [ ] Import old code
 - [ ] Grab the lamelight from last years robot
 - [ ] Set up lamelight (Photon vision) ([see last year's repo](#last-years-repo))
 - [ ] Incorperate lamelight table with shuffleboard
