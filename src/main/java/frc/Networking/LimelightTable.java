@@ -3,6 +3,8 @@
 // the WPILib BSD license file in the root directory of this project.
 // more info on limelight networking here 
 // https://docs.limelightvision.io/docs/docs-limelight/apis/complete-networktables-api
+
+// This should not be called directly, but abstracted through limelight subsystem
 package frc.Networking; // changed from network
 
 import edu.wpi.first.networktables.NetworkTable;
