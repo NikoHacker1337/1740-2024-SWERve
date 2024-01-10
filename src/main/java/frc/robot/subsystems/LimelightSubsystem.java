@@ -7,19 +7,12 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.Networking.LimelightTable;
 
-import java.util.Optional;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
-
 public class LimelightSubsystem extends SubsystemBase {
 
   private LimelightTable m_LimelightTable;
-  private Optional<Alliance> m_alliance;
 
   public LimelightSubsystem() {
     m_LimelightTable = LimelightTable.getInstance();
-    m_alliance = DriverStation.getAlliance();
     enableDriverCamera();
   }
 
