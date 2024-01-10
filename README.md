@@ -24,6 +24,7 @@
 - [ ] Cordinate the software team and see who wants to help with software
 - [ ] Inform software team of structure and git and PID
 - [ ] Make sure they all have a solid understanding of the principles the code runs on ([see last year's repo](#last-year-repo))
+- [ ] Make sure everyone has a solid understanding of java
 - [ ] Cordinate tasks
 - [ ] Assign some sort of laptop system
 
@@ -52,6 +53,7 @@
 
 `Vision`
 * Concurent work on limelight and lamelight
+- [x] Import old code
 - [ ] Setup and update [limelight](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
 - [ ] Calibrate the limelight with the online tool
 - [ ] Check and fix imported limelight subsystem
@@ -59,6 +61,8 @@
 - [ ] Get current limelight tag id and adjust co-driver controls based off it.
 
 * Concurent work on limelight and lamelight
+- [x] Import old code
+- [ ] Grab the lamelight from last years robot
 - [ ] Set up lamelight (Photon vision) ([see last year's repo](#last-years-repo))
 - [ ] Incorperate lamelight table with shuffleboard
 - [ ] Set up lamelight and calibrate it
@@ -77,3 +81,11 @@
 ### Last Year's Repo
 * :warning: This is intended as a place of reference to see the general structure, not to copy code without understanding it
 * [2023 Souce Code](https://github.com/crephoto/CommandBased_2023)
+
+### Important Devolopment Resources
+This is the main resource we use besides googling things, this contains most, if not all the answers you need
+* [Wpilib Documentation](https://docs.wpilib.org/en/stable/docs/zero-to-robot/introduction.html)
+* [Java Wpilib Api](https://github.wpilib.org/allwpilib/docs/release/java/index.html)
+* [Limelight Vision Documentation](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
+* [The Most Important Resource](https://www.google.com)
+* If you need any further help or explainations, feel free to talk to me, or any of the software mentors.
