@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommandDisplay {
   public static void main(String[] args) {
@@ -41,7 +43,7 @@ public class CommandDisplay {
 
   private static void createFile(){
     try {
-      File myObj = new File("build/generated/AccessibleCommands.txt");
+      File myObj = new File("build/generated/AccessibleCommands.jtxt");
       if (myObj.createNewFile()) {
         System.out.println("File created: " + myObj.getName());
       } else {
@@ -56,7 +58,7 @@ public class CommandDisplay {
     // str = str.replaceAll("\\s",""); // remove whitespace
     str = str.replaceAll("\\{",""); // remove {
     try {
-      FileWriter myWriter = new FileWriter("build/generated/AccessibleCommands.txt", true);
+      FileWriter myWriter = new FileWriter("build/generated/AccessibleCommands.jtxt", true);
       myWriter.write(str + '\n');
       myWriter.close();
       // System.out.println("Successfully wrote to the file.");
@@ -66,13 +68,25 @@ public class CommandDisplay {
     }
   }
   private static void printFile(File fileToPrint){
+    String fileName = fileToPrint.getName();
+    fileName = fileName.replaceAll("\\.java",""); // remove .java
+    fileName = fileName.toLowerCase();
     try (BufferedReader br = new BufferedReader(new FileReader(fileToPrint))) {
       String line;
+      List<String> commentedFunctions  = new ArrayList<>();
       while ((line = br.readLine()) != null) {
-        if(line.contains("public") && line.contains("{") && line.contains("(") && !line.contains("}" /*not empty function*/)){
-          // System.out.println(line);
-          writeLineToFile(line);
+        String editedLine = line.toLowerCase();
+        if(editedLine.contains("public") && editedLine.contains("{") && editedLine.contains("(") && !editedLine.contains("}") 
+        && !editedLine.contains(fileName) && !editedLine.contains("periodic")){
+          if(editedLine.trim().charAt(0) == '/' && editedLine.trim().charAt(1) == '/'){
+            commentedFunctions.add(line);
+          }else{
+            writeLineToFile(line);
+          }
         }
+      }
+      for (String functions : commentedFunctions) {
+        writeLineToFile(functions);
       }
     }catch(Exception e) {
 
