@@ -65,7 +65,7 @@
 `Vision`
 * Concurent work on limelight and lamelight
 - [x] Import old code
-- [ ] Setup and update [limelight](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
+- [x] Setup and update [limelight](https://docs.limelightvision.io/docs/docs-limelight/getting-started/summary)
 - [ ] Calibrate the limelight with the online tool
 - [ ] Check and fix imported limelight subsystem
 - [ ] Incorperate limelight table with shuffleboard
@@ -73,7 +73,7 @@
 
 * Concurent work on limelight and lamelight
 - [ ] Import old code
-- [ ] Grab the lamelight from last years robot
+- [x] Grab the lamelight from last years robot
 - [ ] Set up lamelight (Photon vision) ([see last year's repo](#last-years-repo))
 - [ ] Incorperate lamelight table with shuffleboard
 - [ ] Set up lamelight and calibrate it
