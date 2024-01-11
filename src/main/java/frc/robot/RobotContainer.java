@@ -22,6 +22,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
 
@@ -33,29 +34,45 @@ import java.util.List;
  */
 public class RobotContainer {
   // The robot's subsystems
-  private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+  private DriveSubsystem m_robotDrive;
+
+  private RobotShared m_robotShared = RobotShared.getInstance();
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  private CommandXboxController m_driverController;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
+  initSubsystems();
+  initInputDevices();
 
-    // Configure default commands
-    m_robotDrive.setDefaultCommand(
-        // The left stick controls translation of the robot.
-        // Turning is controlled by the X axis of the right stick.
-        new RunCommand(
-          () -> m_robotDrive.drive(
-            -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-            -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-            -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
-            true, true),
-            m_robotDrive));
+  configureButtonBindings();
+
+  // Configure default commands
+  m_robotDrive.setDefaultCommand(
+    // The left stick controls translation of the robot.
+    // Turning is controlled by the X axis of the right stick.
+    new RunCommand(
+      () -> m_robotDrive.drive(
+        -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
+        -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
+        -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+        true, true),
+        m_robotDrive));
+  }
+
+  private void initSubsystems() {
+    // New ------------------------------------------------------------------------------------------
+    m_robotShared = RobotShared.getInstance();
+
+    m_robotDrive = m_robotShared.getDriveSubsystem();
+    // ----------------------------------------------------------------------------------------------
+  }
+  private void initInputDevices() {
+    m_driverController = m_robotShared.getDriverController();
   }
 
   /**
@@ -68,10 +85,8 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kR1.value)
-      .whileTrue(new RunCommand(
-        () -> m_robotDrive.setXFormation(),
-        m_robotDrive));
+    m_driverController.x()
+      .whileTrue(new RunCommand(() -> m_robotDrive.setXFormation()));
   }
 
   /**

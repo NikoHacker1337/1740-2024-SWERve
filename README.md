@@ -60,6 +60,7 @@
 - [ ] Create control ideas for the driver and co driver (talk to Abby and Co-Driver)
 - [ ] Implement controls
 - [ ] Make sure control feel is good and everything makes sense
+- [ ] Different control selection from shuffleboard
 - [ ] Controller rumble would be cool, could provide feedback on time left in match??
 
 `Vision`
