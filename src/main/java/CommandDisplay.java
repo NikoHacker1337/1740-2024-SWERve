@@ -41,7 +41,7 @@ public class CommandDisplay {
     }
   }
 
-  private static void createFile(){
+  private static void createFile() {
     try {
       File myObj = new File("build/generated/AccessibleCommands.jtxt");
       if (myObj.createNewFile()) {
@@ -54,20 +54,19 @@ public class CommandDisplay {
       e.printStackTrace();
     }
   }
-  private static void writeLineToFile(String str){
+  private static void writeLineToFile(String str) {
     // str = str.replaceAll("\\s",""); // remove whitespace
     str = str.replaceAll("\\{",""); // remove {
     try {
       FileWriter myWriter = new FileWriter("build/generated/AccessibleCommands.jtxt", true);
       myWriter.write(str + '\n');
       myWriter.close();
-      // System.out.println("Successfully wrote to the file.");
     } catch (IOException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
   }
-  private static void printFile(File fileToPrint){
+  private static void printFile(File fileToPrint) {
     String fileName = fileToPrint.getName();
     fileName = fileName.replaceAll("\\.java",""); // remove .java
     fileName = fileName.toLowerCase();
@@ -79,14 +78,18 @@ public class CommandDisplay {
         if(editedLine.contains("public") && editedLine.contains("{") && editedLine.contains("(") && !editedLine.contains("}") 
         && !editedLine.contains(fileName) && !editedLine.contains("periodic")){
           if(editedLine.trim().charAt(0) == '/' && editedLine.trim().charAt(1) == '/'){
-            commentedFunctions.add("  " + line.trim());
+            commentedFunctions.add(line);
           }else{
-            writeLineToFile(line);
+            line = line.replaceAll("\\{","");
+            line = line.trim();
+            writeLineToFile("  " + line + ";");
           }
         }
       }
-      for (String functions : commentedFunctions) {
-        writeLineToFile(functions);
+      for (String function : commentedFunctions) {
+        function = function.replaceAll("\\{","");
+        function = function.trim();
+        writeLineToFile(function);
       }
     }catch(Exception e) {
 

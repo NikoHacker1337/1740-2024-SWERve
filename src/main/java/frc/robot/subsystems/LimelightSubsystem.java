@@ -16,29 +16,29 @@ public class LimelightSubsystem extends SubsystemBase {
     enableDriverCamera();
   }
 
-  public double getXdeviation(){
+  public double getXdeviation() {
     return m_LimelightTable.getTx();
   }
-  public double getYdeviation(){
+  public double getYdeviation() {
     return m_LimelightTable.getTy();
   }
 
-  public void enableVisionProcessing(){
+  public void enableVisionProcessing() {
     m_LimelightTable.setCamMode(0);
     m_LimelightTable.setPipeline(1);
     m_LimelightTable.setLedMode(3);
     System.out.println("Vision processing enabled");
   }
-  public void enableDriverCamera(){
+  public void enableDriverCamera() {
     m_LimelightTable.setCamMode(1);
     m_LimelightTable.setLedMode(1);
   }
 
-  public double getCamMode(){
+  public double getCamMode() {
     return m_LimelightTable.getCamMode();
   }
   //Toggle led on and off
-  public void toggleLED(){
+  public void toggleLED() {
     if (m_LimelightTable.getLedMode() == 1){
       m_LimelightTable.setLedMode(3);
     }else{
@@ -47,7 +47,7 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   //Returns true if Limelight is in vision processing mode
-  public Boolean isVisionProcessing(){
+  public Boolean isVisionProcessing() {
     return m_LimelightTable.getCamMode() == 0 && m_LimelightTable.getLedMode() == 3;
   }
 
@@ -63,7 +63,7 @@ public class LimelightSubsystem extends SubsystemBase {
   //   m_LimelightTable.setPipeline(1);
   // }
 
-  public double getTargetedID(){
+  public double getTargetedID() {
     return m_LimelightTable.getCurrentApriltagId();
   }
 
