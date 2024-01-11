@@ -79,7 +79,7 @@ public class CommandDisplay {
         if(editedLine.contains("public") && editedLine.contains("{") && editedLine.contains("(") && !editedLine.contains("}") 
         && !editedLine.contains(fileName) && !editedLine.contains("periodic")){
           if(editedLine.trim().charAt(0) == '/' && editedLine.trim().charAt(1) == '/'){
-            commentedFunctions.add(line);
+            commentedFunctions.add("  " + line.trim());
           }else{
             writeLineToFile(line);
           }
